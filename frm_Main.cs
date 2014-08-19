@@ -36,12 +36,12 @@ namespace BCS {
                 PService.PeripheralDegreesModule POS = null, POD = null;
                 if (OS != null) {
                     try { POS = client.GetPeripheralDegrees(OS.ImageId, true); } catch { }
-                    DOS = new Data(OS, client.GetBCS(OS.ImageId));
+                    DOS = new Data(client.GetBCS(OS.ImageId));
                 }
                 if (OD != null) {
                     try { POD = client.GetPeripheralDegrees(OD.ImageId, true); }
                     catch { }
-                    DOD = new Data(OD, client.GetBCS(OD.ImageId));
+                    DOD = new Data(client.GetBCS(OD.ImageId));
                 }
                 string filename = Path.Combine(Properties.Settings.Default.EgoDirectory, Study.StudyId + ".ker");
                 using (StreamWriter sw = File.AppendText(filename)) {

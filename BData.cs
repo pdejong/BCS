@@ -40,8 +40,7 @@ namespace BCS {
 
         public Sequence Flat, Steep;
 
-        public Data(PService.Image img, Stream bcs) {
-            this.Img = img;
+        public Data(Stream bcs) {
             this.Elevation = new List<float>();
             this.LocalRadii = new List<float>();
             this.SagittalRadii = new List<float>();
@@ -108,6 +107,7 @@ namespace BCS {
             }
         }
 
+        public Data(string path) : this(File.OpenRead(path)) { }
         private void ReadSequence(Stream s) {
             using (BinaryReader br = new BinaryReader(s)) {
                 do {
